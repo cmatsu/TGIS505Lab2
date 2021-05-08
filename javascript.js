@@ -67,8 +67,7 @@ schoolsmap.on("click", "tacomaschools", function(f) {
 	});
 
 	var hasLayer = schoolsmap.getLayer('nearestFastFoodLayer');
-	if(typeof hasLayer !== 'undefined') {
-		schoolsmap.addLayer({
+	schoolsmap.addLayer({
 			id: "nearestFastFoodLayer",
 			type: "circle",
 			source: "nearest-fastfood",
@@ -78,7 +77,6 @@ schoolsmap.on("click", "tacomaschools", function(f) {
 				"circle-opacity": 0.5
 			}
 		}, "fastfood");
-  }
 
 	var distance = turf.distance(refSchool, nearestFastFood, {units: "miles"}).toFixed(2);
 
