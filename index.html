@@ -3,10 +3,10 @@
 	<head>
 		<title>Schools and FastFood Locations in Tacoma</title>
 		<!-- insert Mapbox GL library links here -->
-		<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-		<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
 		<link rel='preconnect' href='https://fonts.gstatic.com'>
 		<link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap' rel='stylesheet'>
+		<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
+		<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
 		<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
 		<script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
 	</head>
@@ -85,119 +85,7 @@
 					<div id='schoolsmap'><div id='menu'></div></div>
 			</div>
 		</div>
-		<script>
-
-		//copy your access token here
-		mapboxgl.accessToken = 'pk.eyJ1IjoiY21hdHN1IiwiYSI6ImNraGNuNmw0YzAxajIyeXA1ZWE4aG80NDcifQ.3Y8_bQTBQeuNtqFL3OMBVw';
-
-		//private and public schools map
-    var schoolsmap = new mapboxgl.Map({
-    	container: 'schoolsmap',
-      style: 'mapbox://styles/cmatsu/cko9wqb950ghu18kzpspc5ri8',
-      center: [-122.48472, 47.23277], // fixed
-      zoom: 11
-    });
-
-		// schoolsmap.on('click', function (e) {
-		// 	var features = schoolsmap.queryRenderedFeatures(e.point, {
-		// 		layers: ['tacomaschools', 'fastfood']
-		// 	});
-		//
-		// 	if (!features.length) {
-		// 		return;
-		// 	}
-		//
-		// 	var feature = features[0];
-		//
-		// 	var popup = new mapboxgl.Popup({ offset: [0, -15] })
-		// 	.setLngLat(feature.geometry.coordinates)
-		// 	.setHTML(
-		// 		'<p><b>Name:</b> ' +
-		// 		feature.properties.school +
-		// 		'</p><p><b>Address:</b> ' +
-		// 		feature.properties.location_1_address +
-		// 		'</p><p><b>Educational Stage:</b> ' +
-		// 		feature.properties.educational_stage +
-		// 		'</p><p><b>Stages Offered:</b> ' +
-		// 		feature.properties.stages_offered +
-		// 		'</p>'
-		// 	)
-		//
-		// 	.addTo(schoolsmap);
-		// });
-		schoolsmap.on('load', function() {
-			schoolsmap.addSource('nearest-fastfood', {
-				type: 'geojson',
-				data: {
-					type: 'FeatureCollection',
-					features: [
-					]
-				}
-			});
-		});
-
-
-		var popup = new mapboxgl.Popup();
-
-		schoolsmap.on('click', 'fastfood', function(e) {
-		  var feature = e.features[0];
-		  popup.setLngLat(feature.geometry.coordinates)
-		    .setHTML("<b>Name:</b> " + feature.properties.Name)
-		    .addTo(schoolsmap);
-		});
-
-		schoolsmap.on('click', 'tacomaschools', function(f) {
-		  var refSchool = f.features[0];
-		  var nearestFastFood = turlllllllf.nearest(refSchool, fastFoodPoints);
-			schoolsmap.getSource('nearest-fastfood').setData({
-				type: 'FeatureCollection',
-				features: [
-					nearestFastFood
-				]
-			});
-
-			schoolsmap.addLayer({
-				id: 'nearestFastFoodLayer',
-				type: 'circle',
-				source: 'nearest-fastfood',
-				paint: {
-					'circle-radius': 12,
-					'circle-color': '#486DE0'
-				}
-			}, 'fastfood');
-
-			var distance = turf.distance(refSchool, nearestFastFood, {units: "miles"}).toFixed(2);
-
-			popup.setLngLat(refSchool.geometry.coordinates)
-		    .setHTML('<b>' + refSchool.properties.Name + '</b><br>The nearest hospital is ' + nearestFastFood.properties.Name + ', located at ' + nearestFastFood.properties.Address + ". It is " + distance + " miles away.")
-		    .addTo(schoolsmap);
-		});
-
-		//toggle layers
-		var toggleableLayerIds = ['tacomaschools', 'fastfood'];
-		for (var i = 0; i < toggleableLayerIds.length; i++) {
-			var id = toggleableLayerIds[i];
-			var link = document.createElement('a');
-			link.href = '#';
-			link.className = 'active';
-			link.textContent = id;
-			link.onclick = function(e) {
-				var clickedLayer = this.textContent;
-				e.preventDefault();
-				e.stopPropagation();
-				var visibility = schoolsmap.getLayoutProperty(clickedLayer, 'visibility');
-				if (this.className === 'active') {
-					schoolsmap.setLayoutProperty(clickedLayer, 'visibility', 'none');
-					this.className = '';
-				} else {
-					this.className = 'active';
-					schoolsmap.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-				}
-			};
-			var layers = document.getElementById('menu');
-			layers.appendChild(link);
-		}
-		</script>
+		<script src="javascript.js"></script>
 		<footer>
 		  <p>Created by Chiaki Matsuno 2021</p>
 		</footer>
