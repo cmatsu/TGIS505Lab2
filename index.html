@@ -11,73 +11,72 @@
 		<script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
 	</head>
   <style>
-  body {
-	  font-family: 'Montserrat', sans-serif;
-	  font-weight: 300;
-	  text-align: center;
-	  background-color: #ffefbf;
-	  color: #594c3f;
-	  padding: 30px;
-	}
+	  body {
+		  font-family: 'Montserrat', sans-serif;
+		  font-weight: 300;
+		  text-align: center;
+		  background-color: #ffefbf;
+		  color: #594c3f;
+		  padding: 30px;
+		}
 
-	.container {
-	  min-height: 80vh;
-	  justify-content: flex-start;
-	}
+		.container {
+		  min-height: 80vh;
+		  justify-content: flex-start;
+		}
 
-	.container, .maps {
-	  display: flex;
-	  text-align: center;
-	  flex-direction: column;
-	  align-items: center;
-	  align-self: center;
-	  border-radius: 25px;
-	}
+		.container, .maps {
+		  display: flex;
+		  text-align: center;
+		  flex-direction: column;
+		  align-items: center;
+		  align-self: center;
+		  border-radius: 25px;
+		}
 
-	#schoolsmap {
-	  position: relative;
-	  height: 85vh; width: 70vw;
-	}
-	#menu {
-	   position: absolute;
-	   z-index: 1;
-	   top: 3vh;
-	   right: 3vw;
-	   background: #fff;
-	   width: 120px;
-	   border: 1px solid rgba(0, 0, 0, 0.4);
-	}
+		#schoolsmap {
+		  position: relative;
+		  height: 85vh; width: 70vw;
+		}
+		#menu {
+		   position: absolute;
+		   z-index: 1;
+		   top: 3vh;
+		   right: 3vw;
+		   background: #fff;
+		   width: 120px;
+		   border: 1px solid rgba(0, 0, 0, 0.4);
+		}
 
-	#menu a {
-	  font-size: 13px;
-	  color: #404040;
-	  display: block;
-	  margin: 0;
-	  padding: 0;
-	  padding: 10px;
-	  text-decoration: none;
-	  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-	  text-align: center;
-	}
+		#menu a {
+		  font-size: 13px;
+		  color: #404040;
+		  display: block;
+		  margin: 0;
+		  padding: 0;
+		  padding: 10px;
+		  text-decoration: none;
+		  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+		  text-align: center;
+		}
 
-	#menu a:last-child {
-		border: none;
-	}
+		#menu a:last-child {
+			border: none;
+		}
 
-	#menu a:hover {
-		background-color: #f8f8f8;
-		color: #404040;
-	}
+		#menu a:hover {
+			background-color: #f8f8f8;
+			color: #404040;
+		}
 
-	#menu a.active {
-		background-color: #3887be;
-		color: #ffffff;
-	}
+		#menu a.active {
+			background-color: #3887be;
+			color: #ffffff;
+		}
 
-	#menu a.active:hover {
-		background: #3074a4;
-	}
-
+		#menu a.active:hover {
+			background: #3074a4;
+		}
   </style>
 	<body>
 		<div class='container'>
@@ -148,10 +147,8 @@
 		});
 
 		schoolsmap.on('click', 'tacomaschools', function(f) {
-			// Using Turf, find the nearest mcdonalds to school clicked
 		  var refSchool = f.features[0];
-		  var nearestFastFood = turf.nearest(refSchool, fastFoodPoints);
-			// Update the 'nearest-fastfood' data source to include the nearest library
+		  var nearestFastFood = turlllllllf.nearest(refSchool, fastFoodPoints);
 			schoolsmap.getSource('nearest-fastfood').setData({
 				type: 'FeatureCollection',
 				features: [
@@ -159,7 +156,6 @@
 				]
 			});
 
-			// Create a new circle layer from the 'nearest-fastfood' data source
 			schoolsmap.addLayer({
 				id: 'nearestFastFoodLayer',
 				type: 'circle',
