@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mapping with Mapbox</title>
+		<!-- insert Mapbox GL library links here -->
+		<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+		<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
+		<link rel='stylesheet' href='styles.css'/>
+		<link rel='preconnect' href='https://fonts.gstatic.com'>
+		<link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap' rel='stylesheet'>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+	</head>
+
+	<body>
+		<div class='container'>
+			<h1 class='heading'>Mapping with Mapbox</h1>
+
+			<div class='maps' id='map2'>
+					<h1 class='subheading'>Private and Public School Locations</h1>
+					<div id='schoolsmap'>
+						<div id='menu'></div>
+					</div>
+					<p>This is a map showing all private and public schools in Seattle.</p>
+					<p>It is evident that there is a cluster of private schools located in central Seattle</p>
+					<p>Public schools are more ubiquitous and there are more of them located in the city limits.</p>
+					<p>Layers for this map can be toggled by using the button on the top right of the screen.</p>
+					<p>Data obtained from <a href="https://data-seattlecitygis.opendata.arcgis.com/">City of Seattle GeoData</a> and icon obtained from <a href="https://www.iconfinder.com/">Iconfinder</a></p>
+			</div>
+		</div>
+		<script>
+
+		//copy your access token here
+		mapboxgl.accessToken = 'pk.eyJ1IjoiY21hdHN1IiwiYSI6ImNraGNuNmw0YzAxajIyeXA1ZWE4aG80NDcifQ.3Y8_bQTBQeuNtqFL3OMBVw';
+
+		//private and public schools map
+		var schoolsmap = new mapboxgl.Map({
+			container: 'schoolsmap', // container id
+			style: 'mapbox://styles/cmatsu/cko9wqb950ghu18kzpspc5ri8', // stylesheet location
+			center: [-122.48472, 47.23277],
+			zoom: 11
+		});
+
+		schoolsmap.on('click', function (e) {
+			var features = schoolsmap.queryRenderedFeatures(e.point, {
+				layers: ['tacomaschools', 'fastfood'] // replace this with the name of the layer
+			});
+
+			if (!features.length) {
+				return;
+			}
+
+			var feature = features[0];
+
+			var popup = new mapboxgl.Popup({ offset: [0, -15] })
+				.setLngLat(feature.geometry.coordinates)
+				.setHTML(
+					'<h6>Name:</h6><h5> ' +
+						feature.properties.NAME +
+						'</h5><h6>Grade:</h6><h5> ' +
+							feature.properties.GRADE +
+						'</h5><h6>Address:</h6><h5> ' +
+						feature.properties.ADDRESS +
+						'</h5><h6>Zipcode:</h6><h5> ' +
+						feature.properties.ZIP +
+						'</h5>'
+				)
+				.setLngLat(feature.geometry.coordinates)
+				.addTo(schoolsmap);
+		});
+		var toggleableLayerIds = ['tacomaschools', 'fastfood'];
+
+		for (var i = 0; i < toggleableLayerIds.length; i++) {
+			var id = toggleableLayerIds[i];
+
+			var link = document.createElement('a');
+			link.href = '#';
+			link.className = 'active';
+			link.textContent = id;
+
+			link.onclick = function(e) {
+				var clickedLayer = this.textContent;
+				e.preventDefault();
+				e.stopPropagation();
+
+				var visibility = schoolsmap.getLayoutProperty(clickedLayer, 'visibility');
+
+				if (this.className === 'active') {
+					schoolsmap.setLayoutProperty(clickedLayer, 'visibility', 'none');
+					this.className = '';
+				} else {
+					this.className = 'active';
+					schoolsmap.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+				}
+			};
+
+			var layers = document.getElementById('menu');
+
+			layers.appendChild(link);
+		}
+		</script>
+
+		<footer>
+		  <p>Created by Chiaki Matsuno 2020</p>
+		</footer>
+
+	</body>
+
+</html>

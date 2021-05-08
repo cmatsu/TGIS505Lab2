@@ -1,0 +1,16 @@
+{"type":"FeatureCollection","features":[
+	{"type":"Feature","properties":{"Name":"McDonalds 1","City":"Tacoma","State":"WA","Address":"10417 Pacific Hwy SW","ZIP":98499},"geometry":{"type":"Point","coordinates":[-122.4830424785614,47.16323214034083]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 2","City":"Tacoma","State":"WA","Address":"11012 Pacific Ave S","ZIP":98444},"geometry":{"type":"Point","coordinates":[-122.43496656417845,47.15687445982137]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 3","City":"Tacoma","State":"WA","Address":"10909 Portland Ave E","ZIP":98445},"geometry":{"type":"Point","coordinates":[-122.40108489990233,47.15706779121257]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 4","City":"Tacoma","State":"WA","Address":"7217 Pacific Ave","ZIP":98408},"geometry":{"type":"Point","coordinates":[-122.4335879087448,47.19158987090876]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 5","City":"Tacoma","State":"WA","Address":"2916 S 38th St","ZIP":98409},"geometry":{"type":"Point","coordinates":[-122.47450768947601,47.22205653894466]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 6","City":"Tacoma","State":"WA","Address":"4814 Center St","ZIP":98409},"geometry":{"type":"Point","coordinates":[-122.50242948532104,47.234005188937665]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 7","City":"Tacoma","State":"WA","Address":"1975 S Union Ave","ZIP":98405},"geometry":{"type":"Point","coordinates":[-122.48173356056212,47.239942083251236]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 8","City":"Tacoma","State":"WA","Address":"6311 6th Ave","ZIP":98406},"geometry":{"type":"Point","coordinates":[-122.52154290676116,47.255837300612605]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 9","City":"Tacoma","State":"WA","Address":"2203 N Pearl St","ZIP":98406},"geometry":{"type":"Point","coordinates":[-122.51534163951872,47.268156908367814]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 10","City":"Tacoma","State":"WA","Address":"802 Tacoma Ave S","ZIP":98402},"geometry":{"type":"Point","coordinates":[-122.445507645607,47.25519648608356]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 11","City":"Tacoma","State":"WA","Address":"802 Tacoma Ave S","ZIP":98402},"geometry":{"type":"Point","coordinates":[-122.52699822861344,47.24396956755938]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 12","City":"Tacoma","State":"WA","Address":"802 Tacoma Ave S","ZIP":98402},"geometry":{"type":"Point","coordinates":[-122.53637371417817,47.22901768343221]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 13","City":"Tacoma","State":"WA","Address":"802 Tacoma Ave S","ZIP":98402},"geometry":{"type":"Point","coordinates":[-122.50893248762976,47.19580836083961]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 14","City":"Tacoma","State":"WA","Address":"802 Tacoma Ave S","ZIP":98402},"geometry":{"type":"Point","coordinates":[-122.5461975418104,47.18587117846591]}},
+	{"type":"Feature","properties":{"Name":"McDonalds 15","City":"Tacoma","State":"WA","Address":"802 Tacoma Ave S","ZIP":98402},"geometry":{"type":"Point","coordinates":[-122.5211969358411,47.17400823483411]}}]}

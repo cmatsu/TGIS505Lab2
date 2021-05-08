@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Schools and FastFood Locations in Tacoma</title>
+		<!-- insert Mapbox GL library links here -->
+		<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+		<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
+		<link rel='preconnect' href='https://fonts.gstatic.com'>
+		<link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap' rel='stylesheet'>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+		<script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+	</head>
+  <style>
+  body {
+	  font-family: 'Montserrat', sans-serif;
+	  font-weight: 300;
+	  text-align: center;
+	  background-color: #ffefbf;
+	  color: #594c3f;
+	  padding: 30px;
+	}
+
+	.container {
+	  min-height: 80vh;
+	  justify-content: flex-start;
+	}
+
+	.container, .maps {
+	  display: flex;
+	  text-align: center;
+	  flex-direction: column;
+	  align-items: center;
+	  align-self: center;
+	  border-radius: 25px;
+	}
+
+	#schoolsmap {
+	  position: relative;
+	  height: 85vh; width: 70vw;
+	}
+	#menu {
+	   position: absolute;
+	   z-index: 1;
+	   top: 3vh;
+	   right: 3vw;
+	   background: #fff;
+	   width: 120px;
+	   border: 1px solid rgba(0, 0, 0, 0.4);
+	}
+
+	#menu a {
+	  font-size: 13px;
+	  color: #404040;
+	  display: block;
+	  margin: 0;
+	  padding: 0;
+	  padding: 10px;
+	  text-decoration: none;
+	  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	  text-align: center;
+	}
+
+	#menu a:last-child {
+		border: none;
+	}
+
+	#menu a:hover {
+		background-color: #f8f8f8;
+		color: #404040;
+	}
+
+	#menu a.active {
+		background-color: #3887be;
+		color: #ffffff;
+	}
+
+	#menu a.active:hover {
+		background: #3074a4;
+	}
+
+  </style>
+	<body>
+		<div class='container'>
+			<h1 class='heading'>Schools and FastFood Locations in Tacoma</h1>
+			<div class='maps'>
+					<div id='schoolsmap'><div id='menu'></div></div>
+			</div>
+		</div>
+		<script>
+
+		//copy your access token here
+		mapboxgl.accessToken = 'pk.eyJ1IjoiY21hdHN1IiwiYSI6ImNraGNuNmw0YzAxajIyeXA1ZWE4aG80NDcifQ.3Y8_bQTBQeuNtqFL3OMBVw';
+
+		//private and public schools map
+    var schoolsmap = new mapboxgl.Map({
+    	container: 'schoolsmap',
+      style: 'mapbox://styles/cmatsu/cko9wqb950ghu18kzpspc5ri8',
+      center: [-122.48472, 47.23277], // fixed
+      zoom: 11
+    });
+
+		// schoolsmap.on('click', function (e) {
+		// 	var features = schoolsmap.queryRenderedFeatures(e.point, {
+		// 		layers: ['tacomaschools', 'fastfood']
+		// 	});
+		//
+		// 	if (!features.length) {
+		// 		return;
+		// 	}
+		//
+		// 	var feature = features[0];
+		//
+		// 	var popup = new mapboxgl.Popup({ offset: [0, -15] })
+		// 	.setLngLat(feature.geometry.coordinates)
+		// 	.setHTML(
+		// 		'<p><b>Name:</b> ' +
+		// 		feature.properties.school +
+		// 		'</p><p><b>Address:</b> ' +
+		// 		feature.properties.location_1_address +
+		// 		'</p><p><b>Educational Stage:</b> ' +
+		// 		feature.properties.educational_stage +
+		// 		'</p><p><b>Stages Offered:</b> ' +
+		// 		feature.properties.stages_offered +
+		// 		'</p>'
+		// 	)
+		//
+		// 	.addTo(schoolsmap);
+		// });
+		schoolsmap.on('load', function() {
+			schoolsmap.addSource('nearest-fastfood', {
+				type: 'geojson',
+				data: {
+					type: 'FeatureCollection',
+					features: [
+					]
+				}
+			});
+		});
+
+
+		var popup = new mapboxgl.Popup();
+
+		schoolsmap.on('click', 'fastfood', function(e) {
+		  var feature = e.features[0];
+		  popup.setLngLat(feature.geometry.coordinates)
+		    .setHTML("<b>Name:</b> " + feature.properties.Name)
+		    .addTo(schoolsmap);
+		});
+
+		schoolsmap.on('click', 'tacomaschools', function(f) {
+			// Using Turf, find the nearest mcdonalds to school clicked
+		  var refSchool = f.features[0];
+		  var nearestFastFood = turf.nearest(refSchool, fastFoodPoints);
+			// Update the 'nearest-fastfood' data source to include the nearest library
+			schoolsmap.getSource('nearest-fastfood').setData({
+				type: 'FeatureCollection',
+				features: [
+					nearestFastFood
+				]
+			});
+
+			// Create a new circle layer from the 'nearest-fastfood' data source
+			schoolsmap.addLayer({
+				id: 'nearestFastFoodLayer',
+				type: 'circle',
+				source: 'nearest-fastfood',
+				paint: {
+					'circle-radius': 12,
+					'circle-color': '#486DE0'
+				}
+			}, 'fastfood');
+
+			var distance = turf.distance(refSchool, nearestFastFood, {units: "miles"}).toFixed(2);
+
+			popup.setLngLat(refSchool.geometry.coordinates)
+		    .setHTML('<b>' + refSchool.properties.Name + '</b><br>The nearest hospital is ' + nearestFastFood.properties.Name + ', located at ' + nearestFastFood.properties.Address + ". It is " + distance + " miles away.")
+		    .addTo(schoolsmap);
+		});
+
+		//toggle layers
+		var toggleableLayerIds = ['tacomaschools', 'fastfood'];
+		for (var i = 0; i < toggleableLayerIds.length; i++) {
+			var id = toggleableLayerIds[i];
+			var link = document.createElement('a');
+			link.href = '#';
+			link.className = 'active';
+			link.textContent = id;
+			link.onclick = function(e) {
+				var clickedLayer = this.textContent;
+				e.preventDefault();
+				e.stopPropagation();
+				var visibility = schoolsmap.getLayoutProperty(clickedLayer, 'visibility');
+				if (this.className === 'active') {
+					schoolsmap.setLayoutProperty(clickedLayer, 'visibility', 'none');
+					this.className = '';
+				} else {
+					this.className = 'active';
+					schoolsmap.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+				}
+			};
+			var layers = document.getElementById('menu');
+			layers.appendChild(link);
+		}
+		</script>
+		<footer>
+		  <p>Created by Chiaki Matsuno 2021</p>
+		</footer>
+
+	</body>
+
+</html>
