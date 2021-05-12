@@ -1,119 +1,12 @@
-
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   text-align: center;
-  background-color: #ffefbf;
-  color: #594c3f;
-  padding: 30px;
+  background-color: #3a5936;
+  color: #503d2b;
 }
 
-p {
-  font-size: 13pt;
-  font-weight: 300;
-  margin-top: 6px;
-  margin-bottom: 6px;
-}
-
-.heading, .subheading {
-  border-radius: 25px;
-  padding: 30px;
-}
-
-.heading {
-  background-color: #a6d9ff;
-  box-shadow: 10px 11px #1a77ba;
-  color: #1a77ba;
-}
-
-.subheading {
-  color: #594c3f;
-  background-color: #ffffff;
-  box-shadow: 10px 11px #dbd5c1;
-}
-
-h1 {
-  font-size: 30pt;
-}
-
-h2 {
-  font-size: 18pt;
-  color: #594c3f;
-  margin-top: 40px;
-}
-
-h3 {
-  font-size: 14pt;
-}
-
-h4 {
-  font-size: 12pt;
-  margin-top: 4px;
-  margin-bottom: 0px;
-  font-weight: normal;
-}
-
-h5, h6{
-  font-size: 10pt;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-h5 {
-  font-weight: normal;
-}
-
-h6 {
- font-weight: bold;
-}
-
-li {
-  text-align: left;
-}
-
-#btn1, #btn2 {
-  padding: 18px;
-  margin: 18px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 15pt;
-  border-radius: 15px;
-  border: none;
-  max-width: 30vw;
-  background-color: #ffc987;
-  box-shadow: 10px 11px #c9a06d;
-}
-
-#btn1:focus, #btn2:focus {
-  outline:none;
-}
-
-.buttonselect, .buttonselect form {
-  display: inline;
-}
-
-.buttonselect button {
-  display: inline;
-  vertical-align: middle;
-}
-
-.mapboxgl-popup-content {
-    color: #2d6b9a;
-    background-color: #ffffff;
-    max-width: 250px;
-    font-family: 'Montserrat', sans-serif;
-    padding: 11 11 11 4px;
-    border-radius: 15px;
-    text-align: left;
-    padding: 15px;
-}
-
-.container {
-  min-height: 80vh;
-  justify-content: flex-start;
-}
-
-.container, .maps, #map1, #map2 {
+.container, .maps, .desc {
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -122,63 +15,65 @@ li {
   border-radius: 25px;
 }
 
-#rsecimap, #schoolsmap {
-  position: relative;
-  height: 85vh; width: 70vw;
+.heading {
+  color: #f2f5f7;
+  font-size: 28pt;
+  margin-top: 60px;
+  text-shadow: 3px 3px #503d2b;
 }
 
-.map-overlay {
-  position: absolute;
-  z-index: 1000;
-  bottom: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.8);
-  margin-right: 20px;
-  font-family: 'Montserrat', sans-serif;
+.desc {
+  background-color: #f2f5f7;
+  margin: 30px 11vw 30px 11vw;
+  width: 70vw;
+  max-width: 1000px;
   overflow: auto;
-  border-radius: 3px;
+  padding: 20px 40px 20px 40px;
+  box-sizing: border-box;
 }
 
-#features {
-  top: 10px;
-  padding-top: 5px;
-  height: 175px;
-  margin-top: 20px;
-  width: 275px;
+#schoolsmap {
+  position: relative;
+  height: 75vh; max-height: 800px; width: 70vw; max-width: 1000px;
+  border-radius: 25px;
+  border: 5px solid #f2f5f7;
+  box-sizing: border-box;
 }
 
-#legend {
+div.mapboxgl-popup-content {
+  font-family: 'Montserrat', sans-serif;
+  white-space: pre-wrap
+  width: 240px;
+  display: flex;
   text-align: left;
-  font-size: 15px;
-  padding: 20px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  line-height: 18px;
-  height: 120px;
-  margin-bottom: 45px;
-  width: 175px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+  border-radius: 10px;
+  color: #503d2b;
+  font-size: 11pt;
 }
 
-.legend-key {
-  display: inline-block;
-  border-radius: 20%;
-  width: 10px;
-  height: 10px;
-  margin-right: 5px;
+button.mapboxgl-popup-close-button {
+  top: 8px;
+  right: 8px;
+  font-size: 11pt;
 }
 
 #menu {
    position: absolute;
    z-index: 1;
-   top: 3vh;
-   right: 3vw;
+   top: 30px;
+   right: 30px;
    background: #fff;
-   width: 120px;
-   border: 1px solid rgba(0, 0, 0, 0.4);
+   width: 150px;
+   border-radius: 15px;
 }
 
 #menu a {
-  font-size: 13px;
-  color: #404040;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11pt;
+  color: #544530;
   display: block;
   margin: 0;
   padding: 0;
@@ -189,19 +84,132 @@ li {
 }
 
 #menu a:last-child {
-border: none;
+  border: none;
+}
+
+#menu a:first-child:hover, #menu a.active:first-child {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#menu a:last-child:hover, #menu a.active:last-child {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 #menu a:hover {
-background-color: #f8f8f8;
-color: #404040;
+  background-color: #dedede;
+  color: #000000;
+  transition:  all 0.5s ease 0s;
 }
 
 #menu a.active {
-background-color: #3887be;
-color: #ffffff;
+  background-color: #f2ecb8;
+  color: #544530;
 }
 
 #menu a.active:hover {
-background: #3074a4;
+  background: #ccc583;
+  color: #000000;
+}
+
+p {
+  font-size: 13pt;
+  color: #503d2b;
+}
+
+footer p {
+  color: #f2f5f7;
+}
+
+.pageBtn {
+  background-color: #f5d086;
+  border-radius: 3.125em;
+  padding: 0 15px 0 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover.pageBtn {
+  background-color: #d9b56f;
+  transition: all 0.5s ease 0s;
+}
+a.pageBtn:hover > p {
+  color: #000000;
+  transition: all 0.5s ease 0s;
+}
+.map-overlay {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(139, 122, 101, 0.8);
+  width: 120px;
+  border-radius: 15px;
+  margin-right: 20px;
+  overflow: auto;
+
+}
+
+div#legend.map-overlay {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.labels {
+  font-family: 'Montserrat', sans-serif;;
+      color: #f2f5f7;
+  font-size: 12pt;
+}
+
+#legend {
+  padding: 15px 15px 0px 15px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 18px;
+  height: 210px;
+  margin-bottom: 30px;
+  width: 230px;
+}
+
+.icons {
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  border-radius: 20%;
+  margin-right: 5px;
+  margin-bottom: -10px;
+}
+
+@media screen and (max-width: 950px), (max-height: 900px) {
+  #menu {
+     width: 120px;
+  }
+
+  .labels {
+    font-size: 10pt;
+  }
+
+  #legend {
+    padding: 10px 5px 10px 10px;
+    line-height: 18px;
+    height: 160px;
+    margin-bottom: 30px;
+    width: 190px;
+  }
+
+  #menu a {
+    font-size: 10pt;
+  }
+
+  .icons {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    border-radius: 20%;
+    margin-right: 5px;
+    margin-bottom: -5px;
+  }
 }

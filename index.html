@@ -6,90 +6,40 @@
 		<link rel='preconnect' href='https://fonts.gstatic.com'>
 		<link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap' rel='stylesheet'>
 		<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
+		<link href='styles.css' rel='stylesheet'/>
 		<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
 		<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
 		<script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+		<link rel="icon" href="images/favicon.png" type="image/png">
 	</head>
-  <style>
-	  body {
-		  font-family: 'Montserrat', sans-serif;
-		  font-weight: 300;
-		  text-align: center;
-		  background-color: #ffefbf;
-		  color: #594c3f;
-		  padding: 30px;
-		}
-
-		.container {
-		  min-height: 80vh;
-		  justify-content: flex-start;
-		}
-
-		.container, .maps {
-		  display: flex;
-		  text-align: center;
-		  flex-direction: column;
-		  align-items: center;
-		  align-self: center;
-		  border-radius: 25px;
-		}
-
-		#schoolsmap {
-		  position: relative;
-		  height: 85vh; width: 70vw;
-		}
-		#menu {
-		   position: absolute;
-		   z-index: 1;
-		   top: 3vh;
-		   right: 3vw;
-		   background: #fff;
-		   width: 120px;
-		   border: 1px solid rgba(0, 0, 0, 0.4);
-		}
-
-		#menu a {
-		  font-size: 13px;
-		  color: #404040;
-		  display: block;
-		  margin: 0;
-		  padding: 0;
-		  padding: 10px;
-		  text-decoration: none;
-		  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-		  text-align: center;
-		}
-
-		#menu a:last-child {
-			border: none;
-		}
-
-		#menu a:hover {
-			background-color: #f8f8f8;
-			color: #404040;
-		}
-
-		#menu a.active {
-			background-color: #3887be;
-			color: #ffffff;
-		}
-
-		#menu a.active:hover {
-			background: #3074a4;
-		}
-  </style>
 	<body>
 		<div class='container'>
-			<h1 class='heading'>Schools and FastFood Locations in Tacoma</h1>
+			<h1 class='heading'>Schools and McDonald's Locations in Tacoma</h1>
 			<div class='maps'>
-					<div id='schoolsmap'><div id='menu'></div></div>
+					<div id='schoolsmap'>
+						<div id="menu"></div>
+						<div class='map-overlay' id='legend'></div>
+					</div>
 			</div>
+
+			<div class='desc'>
+				<p>This is an interactive map that shows the locations of schools and McDonald's restaurants in Tacoma. Clicking on a school reveals the location of the closest McDonald's to it, as well as display the distance between the school and the restaurant.</p>
+
+				<h3>Obesity</h3>
+
+				<p>This is an interactive map that shows the locations of schools and McDonald's restaurants in Tacoma. Clicking on a school reveals the location of the closest McDonald's to it, as well as display the distance between the school and the restaurant.</p>
+
+				<h3>Observations</h3>
+
+				<p>This is an interactive map that shows the locations of schools and McDonald's restaurants in Tacoma. Clicking on a school reveals the location of the closest McDonald's to it, as well as display the distance between the school and the restaurant.</p>
+			</div>
+			<a href="https://cmatsu.github.io/portfolio/work.html" class="pageBtn"><p>return to see all projects</p></a>
 		</div>
+		<!-- <pre id="info"></pre> -->
 		<script src="javascript.js"></script>
+
 		<footer>
 		  <p>Created by Chiaki Matsuno 2021</p>
 		</footer>
-
 	</body>
-
 </html>

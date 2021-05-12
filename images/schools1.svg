@@ -36,15 +36,15 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="2197"
-     inkscape:window-height="1343"
+     inkscape:window-width="2416"
+     inkscape:window-height="2114"
      id="namedview877"
      showgrid="false"
      inkscape:zoom="17.819091"
      inkscape:cx="32.214747"
      inkscape:cy="34.161215"
-     inkscape:window-x="1407"
-     inkscape:window-y="650"
+     inkscape:window-x="956"
+     inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="body_1"
      inkscape:document-rotation="0" />
@@ -64,7 +64,7 @@
        fill="#88D18A"
        fill-rule="nonzero"
        id="path860"
-       style="stroke-width:4.89063411;stroke-miterlimit:4;stroke-dasharray:none;fill:#f5ac82;fill-opacity:1;stroke:#f5ac82;stroke-opacity:1" />
+       style="stroke-width:4.89063411;stroke-miterlimit:4;stroke-dasharray:none;fill:#f0ebd8;fill-opacity:1;stroke:#f0ebd8;stroke-opacity:1" />
     <g
        transform="matrix(1.001953 0 0 1.001953 0 0)"
        id="g862"
@@ -76,7 +76,7 @@
        stroke-linecap="round"
        fill="none"
        id="path864"
-       style="stroke:#f5ac82;stroke-width:8.54999922;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="stroke:#f0ebd8;stroke-width:8.54999922;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <g
        transform="matrix(0.7013003 0.4234847 0 0.5604847 9.374984 29.68974)"
        id="g866"
@@ -93,7 +93,7 @@
        fill="#88D18A"
        fill-rule="nonzero"
        id="path4466"
-       style="fill:#f5ac82;fill-opacity:1;stroke:#f5ac82;stroke-width:2.47108;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="fill:#f0ebd8;fill-opacity:1;stroke:#f0ebd8;stroke-width:2.47108;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        d="m 80.526139,157.91403 c -0.484027,0.0972 -46.735747,-27.79259 -47.222767,-28.47536 -0.48704,-0.68277 -0.63025,-37.833676 -0.14621,-37.930891 0.48403,-0.09723 46.735738,27.792571 47.222758,28.475331 0.48707,0.6828 0.630257,37.83371 0.146219,37.93092 z"
        stroke="#88D18A"
@@ -102,6 +102,6 @@
        fill="#88D18A"
        fill-rule="nonzero"
        id="path4468"
-       style="fill:#f5ac82;fill-opacity:1;stroke:#f5ac82;stroke-width:2.47108;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="fill:#f0ebd8;fill-opacity:1;stroke:#f0ebd8;stroke-width:2.47108;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>
