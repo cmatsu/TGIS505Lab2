@@ -116,6 +116,7 @@ button.mapboxgl-popup-close-button {
 p {
   font-size: 13pt;
   color: #503d2b;
+  line-height: 1.5;
 }
 
 footer p {
@@ -126,6 +127,7 @@ footer p {
   background-color: #f5d086;
   border-radius: 3.125em;
   padding: 0 15px 0 15px;
+  margin-bottom: 10px;
 }
 
 a {
