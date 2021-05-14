@@ -92,6 +92,7 @@ schoolsmap.on("click", "tacomaschools", function(f) {
 });
 
 //toggle layers
+
 var toggleableLayerIds = ["tacomaschools", "fastfood"];
 for (var i = 0; i < toggleableLayerIds.length; i++) {
 	var id = toggleableLayerIds[i];
@@ -105,9 +106,15 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 		e.stopPropagation();
 		var visibility = schoolsmap.getLayoutProperty(clickedLayer, "visibility");
 		if (this.className === "active") {
+			if(this.textContent === "fastfood") {
+				schoolsmap.setLayoutProperty("nearestFastFoodLayer", "visibility", "none");
+			}
 			schoolsmap.setLayoutProperty(clickedLayer, "visibility", "none");
 			this.className = "";
 		} else {
+			if(this.textContent === "fastfood") {
+				schoolsmap.setLayoutProperty("nearestFastFoodLayer", "visibility", "visible");
+			}
 			this.className = "active";
 			schoolsmap.setLayoutProperty(clickedLayer, "visibility", "visible");
 		}
