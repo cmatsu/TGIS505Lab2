@@ -99,13 +99,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 	var link = document.createElement("a");
 	link.href = "#";
 	link.className = "active";
-	var btnName = "";
-	if (id === "tacomaschools") {
-		btnName = "Schools";
-	} else {
-		btnName = "McDonald's";
-	}
-	link.textContent = btnName;
+	link.textContent = id;
 	link.onclick = function(e) {
 		var clickedLayer = this.textContent;
 		e.preventDefault();
